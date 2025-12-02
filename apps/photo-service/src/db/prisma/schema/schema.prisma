@@ -1,10 +1,24 @@
 generator client {
-  provider = "prisma-client"
-  output   = "../generated"
+  provider     = "prisma-client"
+  output       = "../generated"
   moduleFormat = "esm"
-  runtime = "nodejs"
+  runtime      = "nodejs"
 }
 
 datasource db {
   provider = "postgresql"
+}
+
+model Photo {
+  id String @id @default(cuid())
+
+  userId  String
+  comment String
+
+  filePath    String
+  contentType String
+  size        Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

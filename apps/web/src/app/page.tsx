@@ -1,13 +1,12 @@
-"use client";
+import { redirect } from "next/navigation";
+import { getServerSession } from "next-auth";
 
-import { useSession } from "next-auth/react";
+export default async function Page() {
+	const session = await getServerSession();
 
-export default function Home() {
-	const { data } = useSession();
+	if (!session?.user) {
+		return redirect("/sign-in");
+	}
 
-	return (
-		<div className="container mx-auto max-w-3xl px-4 py-2">
-			{data?.user?.name}
-		</div>
-	);
+	return redirect("/photos");
 }
