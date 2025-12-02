@@ -1,7 +1,7 @@
 import cors from "cors";
 import "dotenv/config";
 import express from "express";
-import authRouter from './controllers/auth.controller';
+import authRouter from "./controllers/auth.controller";
 
 const app = express();
 
@@ -18,7 +18,7 @@ app.get("/health", (_req, res) => {
 	res.status(200).send("OK");
 });
 
-app.use('/auth', authRouter);
+app.use("/auth", authRouter);
 
 const port = process.env.PORT || 3002;
 app.listen(port, () => {

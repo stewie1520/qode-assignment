@@ -1,9 +1,9 @@
 import path from "node:path";
-import { defineConfig, env } from "prisma/config";
 import dotenv from "dotenv";
+import { defineConfig, env } from "prisma/config";
 
 dotenv.config({
-	path: "./.env"
+	path: "./.env",
 });
 
 export default defineConfig({
