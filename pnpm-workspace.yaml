@@ -1,0 +1,7 @@
+packages:
+  - apps/*
+  - packages/*
+catalog:
+  dotenv: ^17.2.2
+  "@types/express": ^5.0.1
+  "@prisma/client": ^7.0.0

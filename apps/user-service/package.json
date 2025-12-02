@@ -1,0 +1,33 @@
+{
+  "name": "user-service",
+  "main": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "catalog:",
+    "zod": "^4.1.11",
+    "@prisma/client": "catalog:",
+    "@prisma/adapter-neon": "^7.0.0",
+    "@neondatabase/serverless": "^1.0.2",
+    "ws": "^8.18.3"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.2",
+    "@types/express": "catalog:",
+    "@types/cors": "^2.8.17",
+    "tsx": "^4.19.2",
+    "@types/node": "^22.13.11",
+    "tsdown": "^0.16.5",
+    "prisma": "^7.0.0",
+    "@types/ws": "^8.18.1",
+    "@qode-assignment/config": "workspace:*"
+  }
+}
