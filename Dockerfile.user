@@ -36,7 +36,6 @@ RUN addgroup --system --gid 1001 nodejs && \
 COPY --from=builder --chown=appuser:nodejs /app/apps/user-service/dist ./apps/user-service/dist
 COPY --from=builder --chown=appuser:nodejs /app/node_modules ./node_modules
 COPY --from=builder --chown=appuser:nodejs /app/apps/user-service/node_modules ./apps/user-service/node_modules
-COPY pnpm-lock.yaml pnpm-workspace.yaml package.json turbo.json ./
 COPY apps/user-service/package.json ./apps/user-service/
 
 USER appuser
