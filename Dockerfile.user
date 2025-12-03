@@ -19,6 +19,8 @@ COPY pnpm-lock.yaml pnpm-workspace.yaml package.json turbo.json ./
 COPY apps/user-service ./apps/user-service
 COPY packages ./packages
 
+## Dummy ENV to bypass the db:generate
+ENV DATABASE_URL=postgresql://postgres:postgres@db:5432/photo_service
 RUN pnpm --filter user-service db:generate
 RUN pnpm --filter user-service build
 
