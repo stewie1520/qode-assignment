@@ -1,12 +1,12 @@
 import { redirect } from "next/navigation";
-import { getServerSession } from "next-auth";
+import { getServerAuthSession } from "@/server/auth/auth";
 
 export default async function SignInLayout({
 	children,
 }: {
 	children: React.ReactNode;
 }) {
-	const session = await getServerSession();
+	const session = await getServerAuthSession();
 	if (session) {
 		return redirect("/");
 	}

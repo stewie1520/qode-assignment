@@ -1,9 +1,12 @@
 "use client";
 
-import { LogoutOutlined, UserOutlined } from "@ant-design/icons";
+import { LogoutOutlined, PlusOutlined, UserOutlined } from "@ant-design/icons";
+import { useQueryClient } from "@tanstack/react-query";
 import type { MenuProps } from "antd";
-import { Avatar, Dropdown } from "antd";
+import { Avatar, Button, Dropdown } from "antd";
 import { signOut } from "next-auth/react";
+import { useState } from "react";
+import AddPhotoModal from "@/components/add-photo-modal";
 
 export default function Header({
 	user,
@@ -14,6 +17,9 @@ export default function Header({
 		image?: string | null;
 	};
 }) {
+	const queryClient = useQueryClient();
+	const [isModalOpen, setIsModalOpen] = useState(false);
+
 	const items: MenuProps["items"] = [
 		{
 			key: "profile",
@@ -35,7 +41,10 @@ export default function Header({
 			key: "logout",
 			label: "Logout",
 			icon: <LogoutOutlined />,
-			onClick: () => signOut(),
+			onClick: () => {
+				signOut();
+				queryClient.resetQueries();
+			},
 		},
 	];
 
@@ -48,9 +57,18 @@ export default function Header({
 				display: "flex",
 				justifyContent: "flex-end",
 				alignItems: "center",
+				gap: "8px",
 				boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
 			}}
 		>
+			<Button
+				type="primary"
+				icon={<PlusOutlined />}
+				onClick={() => setIsModalOpen(true)}
+			>
+				Photo
+			</Button>
+			<AddPhotoModal open={isModalOpen} onClose={() => setIsModalOpen(false)} />
 			<Dropdown menu={{ items }} trigger={["click"]} placement="bottomRight">
 				<Avatar
 					src={user?.image ?? undefined}

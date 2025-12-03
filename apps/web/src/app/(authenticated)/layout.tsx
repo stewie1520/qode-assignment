@@ -1,13 +1,13 @@
 import { redirect } from "next/navigation";
-import { getServerSession } from "next-auth";
 import Header from "@/components/header";
+import { getServerAuthSession } from "@/server/auth/auth";
 
 export default async function AuthenticatedLayout({
 	children,
 }: {
 	children: React.ReactNode;
 }) {
-	const session = await getServerSession();
+	const session = await getServerAuthSession();
 	if (!session) {
 		return redirect("/sign-in");
 	}

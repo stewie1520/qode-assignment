@@ -8,7 +8,10 @@ export function userServiceAdapter(): Adapter {
 		async createUser(user: Omit<AdapterUser, "id">) {
 			const res = await fetch(`${baseUrl}/auth/create-user`, {
 				method: "POST",
-				headers: { "Content-Type": "application/json" },
+				headers: {
+					"Content-Type": "application/json",
+					"X-Internal-API": env.USER_SERVICE_INTERNAL_API_KEY,
+				},
 				body: JSON.stringify(user),
 			});
 			if (!res.ok) {
@@ -18,7 +21,12 @@ export function userServiceAdapter(): Adapter {
 		},
 
 		async getUser(id: string) {
-			const res = await fetch(`${baseUrl}/auth/get-user?id=${id}`);
+			const res = await fetch(`${baseUrl}/auth/get-user?id=${id}`, {
+				headers: {
+					"Content-Type": "application/json",
+					"X-Internal-API": env.USER_SERVICE_INTERNAL_API_KEY,
+				},
+			});
 			if (res.status === 404) return null;
 			if (!res.ok) throw new Error("Failed to get user");
 			return res.json();
@@ -27,6 +35,12 @@ export function userServiceAdapter(): Adapter {
 		async getUserByEmail(email: string) {
 			const res = await fetch(
 				`${baseUrl}/auth/get-user-by-email?email=${email}`,
+				{
+					headers: {
+						"Content-Type": "application/json",
+						"X-Internal-API": env.USER_SERVICE_INTERNAL_API_KEY,
+					},
+				},
 			);
 			if (res.status === 404) return null;
 			if (!res.ok) throw new Error("Failed to get user by email");
@@ -39,6 +53,12 @@ export function userServiceAdapter(): Adapter {
 		}: Pick<AdapterAccount, "provider" | "providerAccountId">) {
 			const res = await fetch(
 				`${baseUrl}/auth/get-user-by-account?provider=${provider}&providerAccountId=${providerAccountId}`,
+				{
+					headers: {
+						"Content-Type": "application/json",
+						"X-Internal-API": env.USER_SERVICE_INTERNAL_API_KEY,
+					},
+				},
 			);
 			if (res.status === 404) return null;
 			if (!res.ok) throw new Error("Failed to get user by account");
@@ -48,7 +68,10 @@ export function userServiceAdapter(): Adapter {
 		async linkAccount(account: AdapterAccount) {
 			const res = await fetch(`${baseUrl}/auth/link-account`, {
 				method: "POST",
-				headers: { "Content-Type": "application/json" },
+				headers: {
+					"Content-Type": "application/json",
+					"X-Internal-API": env.USER_SERVICE_INTERNAL_API_KEY,
+				},
 				body: JSON.stringify(account),
 			});
 			if (!res.ok) throw new Error("Failed to link account");

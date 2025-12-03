@@ -8,6 +8,9 @@ export const env = createEnv({
 		GOOGLE_CLIENT_ID: z.string().min(1),
 		GOOGLE_CLIENT_SECRET: z.string().min(1),
 		USER_SERVICE_URL: z.url(),
+		USER_SERVICE_INTERNAL_API_KEY: z.string().min(1),
+		PHOTO_SERVICE_URL: z.url(),
+		PHOTO_SERVICE_INTERNAL_API_KEY: z.string().min(1),
 	},
 	client: {
 		NEXT_PUBLIC_SERVER_URL: z.url(),
@@ -18,6 +21,9 @@ export const env = createEnv({
 		GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
 		GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
 		USER_SERVICE_URL: process.env.USER_SERVICE_URL,
+		PHOTO_SERVICE_URL: process.env.PHOTO_SERVICE_URL,
+		USER_SERVICE_INTERNAL_API_KEY: process.env.USER_SERVICE_INTERNAL_API_KEY,
+		PHOTO_SERVICE_INTERNAL_API_KEY: process.env.PHOTO_SERVICE_INTERNAL_API_KEY,
 		NEXT_PUBLIC_SERVER_URL: process.env.NEXT_PUBLIC_SERVER_URL,
 	},
 });

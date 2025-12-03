@@ -1,8 +1,8 @@
 import { redirect } from "next/navigation";
-import { getServerSession } from "next-auth";
+import { getServerAuthSession } from "@/server/auth/auth";
 
 export default async function Page() {
-	const session = await getServerSession();
+	const session = await getServerAuthSession();
 
 	if (!session?.user) {
 		return redirect("/sign-in");
