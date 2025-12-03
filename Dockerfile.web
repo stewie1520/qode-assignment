@@ -17,8 +17,8 @@ COPY pnpm-lock.yaml pnpm-workspace.yaml package.json turbo.json ./
 COPY apps/web ./apps/web
 COPY packages ./packages
 
-ARG NEXT_PUBLIC_BASE_URL
-ARG SKIP_VALIDATION
+ARG NEXT_PUBLIC_BASE_URL=http://localhost:3001
+ARG SKIP_VALIDATION=true
 
 RUN pnpm --filter web build
 
