@@ -24,7 +24,8 @@
 			"!**/.alchemy",
 			"!**/.svelte-kit",
 			"!**/wrangler.jsonc",
-			"!**/.source"
+			"!**/.source",
+			"!**/prisma"
 		]
 	},
 	"formatter": {
@@ -47,6 +48,9 @@
 						"functions": ["clsx", "cva", "cn"]
 					}
 				}
+			},
+			"performance": {
+				"noImgElement": "off"
 			},
 			"style": {
 				"noParameterAssign": "error",

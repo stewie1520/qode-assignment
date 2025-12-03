@@ -14,7 +14,7 @@ export default async function AuthenticatedLayout({
 
 	return (
 		<div>
-			<Header user={session.user!} />
+			<Header user={session.user} />
 			{children}
 		</div>
 	);

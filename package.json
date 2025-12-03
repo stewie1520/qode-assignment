@@ -2,6 +2,9 @@
 	"name": "qode-assignment",
 	"private": true,
 	"type": "module",
+	"engines": {
+		"node": "25.2.1"
+	},
 	"workspaces": [
 		"apps/*",
 		"packages/*"
@@ -31,5 +34,8 @@
 			"biome check --write ."
 		]
 	},
-	"packageManager": "pnpm@10.20.0"
+	"packageManager": "pnpm@10.20.0",
+	"volta": {
+		"node": "25.2.1"
+	}
 }

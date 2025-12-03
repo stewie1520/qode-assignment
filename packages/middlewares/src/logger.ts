@@ -5,7 +5,7 @@ import pinoHttp from "pino-http";
 export function createLogger(name: string, isDevelopment: boolean) {
 	return pino({
 		name,
-		level: process.env.LOG_LEVEL || (isDevelopment ? "debug" : "info"),
+		level: isDevelopment ? "debug" : "info",
 		transport: isDevelopment
 			? {
 					target: "pino/file",

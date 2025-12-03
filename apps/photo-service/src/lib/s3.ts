@@ -5,6 +5,7 @@ import {
 	S3Client,
 } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+import { config } from "@/config";
 
 export interface FileService {
 	getPublicUrl(key: string): Promise<string>;
@@ -15,14 +16,14 @@ export interface FileService {
 }
 
 const s3Client = new S3Client({
-	region: process.env.AWS_REGION || "us-east-1",
+	region: config.AWS_REGION,
 	credentials: {
-		accessKeyId: process.env.AWS_ACCESS_KEY_ID || "",
-		secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || "",
+		accessKeyId: config.AWS_ACCESS_KEY_ID,
+		secretAccessKey: config.AWS_SECRET_ACCESS_KEY,
 	},
 });
 
-const S3_BUCKET = process.env.AWS_S3_BUCKET || "";
+const S3_BUCKET = config.AWS_S3_BUCKET;
 
 class S3FileService implements FileService {
 	constructor(private readonly s3Client: S3Client) {}
