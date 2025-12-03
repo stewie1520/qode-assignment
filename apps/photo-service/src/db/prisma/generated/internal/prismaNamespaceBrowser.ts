@@ -53,7 +53,9 @@ export const JsonNull = runtime.JsonNull;
  */
 export const AnyNull = runtime.AnyNull;
 
-export const ModelName = {} as const;
+export const ModelName = {
+	Photo: "Photo",
+} as const;
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
 
@@ -70,3 +72,31 @@ export const TransactionIsolationLevel = {
 
 export type TransactionIsolationLevel =
 	(typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel];
+
+export const PhotoScalarFieldEnum = {
+	id: "id",
+	userId: "userId",
+	comment: "comment",
+	filePath: "filePath",
+	contentType: "contentType",
+	size: "size",
+	createdAt: "createdAt",
+	updatedAt: "updatedAt",
+} as const;
+
+export type PhotoScalarFieldEnum =
+	(typeof PhotoScalarFieldEnum)[keyof typeof PhotoScalarFieldEnum];
+
+export const SortOrder = {
+	asc: "asc",
+	desc: "desc",
+} as const;
+
+export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder];
+
+export const QueryMode = {
+	default: "default",
+	insensitive: "insensitive",
+} as const;
+
+export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode];

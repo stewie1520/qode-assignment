@@ -415,7 +415,9 @@ type FieldRefInputType<Model, FieldType> = Model extends never
 	? never
 	: FieldRef<Model, FieldType>;
 
-export const ModelName = {} as const;
+export const ModelName = {
+	Photo: "Photo",
+} as const;
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
 
@@ -436,10 +438,87 @@ export type TypeMap<
 		omit: GlobalOmitOptions;
 	};
 	meta: {
-		modelProps: never;
+		modelProps: "photo";
 		txIsolationLevel: TransactionIsolationLevel;
 	};
-	model: {};
+	model: {
+		Photo: {
+			payload: Prisma.$PhotoPayload<ExtArgs>;
+			fields: Prisma.PhotoFieldRefs;
+			operations: {
+				findUnique: {
+					args: Prisma.PhotoFindUniqueArgs<ExtArgs>;
+					result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotoPayload> | null;
+				};
+				findUniqueOrThrow: {
+					args: Prisma.PhotoFindUniqueOrThrowArgs<ExtArgs>;
+					result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotoPayload>;
+				};
+				findFirst: {
+					args: Prisma.PhotoFindFirstArgs<ExtArgs>;
+					result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotoPayload> | null;
+				};
+				findFirstOrThrow: {
+					args: Prisma.PhotoFindFirstOrThrowArgs<ExtArgs>;
+					result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotoPayload>;
+				};
+				findMany: {
+					args: Prisma.PhotoFindManyArgs<ExtArgs>;
+					result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotoPayload>[];
+				};
+				create: {
+					args: Prisma.PhotoCreateArgs<ExtArgs>;
+					result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotoPayload>;
+				};
+				createMany: {
+					args: Prisma.PhotoCreateManyArgs<ExtArgs>;
+					result: BatchPayload;
+				};
+				createManyAndReturn: {
+					args: Prisma.PhotoCreateManyAndReturnArgs<ExtArgs>;
+					result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotoPayload>[];
+				};
+				delete: {
+					args: Prisma.PhotoDeleteArgs<ExtArgs>;
+					result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotoPayload>;
+				};
+				update: {
+					args: Prisma.PhotoUpdateArgs<ExtArgs>;
+					result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotoPayload>;
+				};
+				deleteMany: {
+					args: Prisma.PhotoDeleteManyArgs<ExtArgs>;
+					result: BatchPayload;
+				};
+				updateMany: {
+					args: Prisma.PhotoUpdateManyArgs<ExtArgs>;
+					result: BatchPayload;
+				};
+				updateManyAndReturn: {
+					args: Prisma.PhotoUpdateManyAndReturnArgs<ExtArgs>;
+					result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotoPayload>[];
+				};
+				upsert: {
+					args: Prisma.PhotoUpsertArgs<ExtArgs>;
+					result: runtime.Types.Utils.PayloadToResult<Prisma.$PhotoPayload>;
+				};
+				aggregate: {
+					args: Prisma.PhotoAggregateArgs<ExtArgs>;
+					result: runtime.Types.Utils.Optional<Prisma.AggregatePhoto>;
+				};
+				groupBy: {
+					args: Prisma.PhotoGroupByArgs<ExtArgs>;
+					result: runtime.Types.Utils.Optional<Prisma.PhotoGroupByOutputType>[];
+				};
+				count: {
+					args: Prisma.PhotoCountArgs<ExtArgs>;
+					result:
+						| runtime.Types.Utils.Optional<Prisma.PhotoCountAggregateOutputType>
+						| number;
+				};
+			};
+		};
+	};
 } & {
 	other: {
 		payload: any;
@@ -477,6 +556,102 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 
 export type TransactionIsolationLevel =
 	(typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel];
+
+export const PhotoScalarFieldEnum = {
+	id: "id",
+	userId: "userId",
+	comment: "comment",
+	filePath: "filePath",
+	contentType: "contentType",
+	size: "size",
+	createdAt: "createdAt",
+	updatedAt: "updatedAt",
+} as const;
+
+export type PhotoScalarFieldEnum =
+	(typeof PhotoScalarFieldEnum)[keyof typeof PhotoScalarFieldEnum];
+
+export const SortOrder = {
+	asc: "asc",
+	desc: "desc",
+} as const;
+
+export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder];
+
+export const QueryMode = {
+	default: "default",
+	insensitive: "insensitive",
+} as const;
+
+export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode];
+
+/**
+ * Field references
+ */
+
+/**
+ * Reference to a field of type 'String'
+ */
+export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<
+	$PrismaModel,
+	"String"
+>;
+
+/**
+ * Reference to a field of type 'String[]'
+ */
+export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<
+	$PrismaModel,
+	"String[]"
+>;
+
+/**
+ * Reference to a field of type 'Int'
+ */
+export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<
+	$PrismaModel,
+	"Int"
+>;
+
+/**
+ * Reference to a field of type 'Int[]'
+ */
+export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<
+	$PrismaModel,
+	"Int[]"
+>;
+
+/**
+ * Reference to a field of type 'DateTime'
+ */
+export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<
+	$PrismaModel,
+	"DateTime"
+>;
+
+/**
+ * Reference to a field of type 'DateTime[]'
+ */
+export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<
+	$PrismaModel,
+	"DateTime[]"
+>;
+
+/**
+ * Reference to a field of type 'Float'
+ */
+export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<
+	$PrismaModel,
+	"Float"
+>;
+
+/**
+ * Reference to a field of type 'Float[]'
+ */
+export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<
+	$PrismaModel,
+	"Float[]"
+>;
 
 /**
  * Batch Payload for updateMany & deleteMany & createMany
@@ -564,7 +739,9 @@ export type PrismaClientOptions = (
 	 */
 	omit?: GlobalOmitConfig;
 };
-export type GlobalOmitConfig = {};
+export type GlobalOmitConfig = {
+	photo?: Prisma.PhotoOmit;
+};
 
 /* Types for Logging */
 export type LogLevel = "info" | "query" | "warn" | "error";

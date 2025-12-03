@@ -29,8 +29,8 @@ export * from "./enums";
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Users
- * const users = await prisma.user.findMany()
+ * // Fetch zero or more Photos
+ * const photos = await prisma.photo.findMany()
  * ```
  *
  * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
@@ -44,3 +44,9 @@ export type PrismaClient<
 		runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = $Class.PrismaClient<LogOpts, OmitOpts, ExtArgs>;
 export { Prisma };
+
+/**
+ * Model Photo
+ *
+ */
+export type Photo = Prisma.PhotoModel;

@@ -202,8 +202,6 @@ export type UserWhereInput = {
 	createdAt?: Prisma.DateTimeFilter<"User"> | Date | string;
 	updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string;
 	accounts?: Prisma.AccountListRelationFilter;
-	sessions?: Prisma.SessionListRelationFilter;
-	Authenticator?: Prisma.AuthenticatorListRelationFilter;
 };
 
 export type UserOrderByWithRelationInput = {
@@ -215,8 +213,6 @@ export type UserOrderByWithRelationInput = {
 	createdAt?: Prisma.SortOrder;
 	updatedAt?: Prisma.SortOrder;
 	accounts?: Prisma.AccountOrderByRelationAggregateInput;
-	sessions?: Prisma.SessionOrderByRelationAggregateInput;
-	Authenticator?: Prisma.AuthenticatorOrderByRelationAggregateInput;
 };
 
 export type UserWhereUniqueInput = Prisma.AtLeast<
@@ -236,8 +232,6 @@ export type UserWhereUniqueInput = Prisma.AtLeast<
 		createdAt?: Prisma.DateTimeFilter<"User"> | Date | string;
 		updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string;
 		accounts?: Prisma.AccountListRelationFilter;
-		sessions?: Prisma.SessionListRelationFilter;
-		Authenticator?: Prisma.AuthenticatorListRelationFilter;
 	},
 	"id" | "email"
 >;
@@ -285,8 +279,6 @@ export type UserCreateInput = {
 	createdAt?: Date | string;
 	updatedAt?: Date | string;
 	accounts?: Prisma.AccountCreateNestedManyWithoutUserInput;
-	sessions?: Prisma.SessionCreateNestedManyWithoutUserInput;
-	Authenticator?: Prisma.AuthenticatorCreateNestedManyWithoutUserInput;
 };
 
 export type UserUncheckedCreateInput = {
@@ -298,8 +290,6 @@ export type UserUncheckedCreateInput = {
 	createdAt?: Date | string;
 	updatedAt?: Date | string;
 	accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput;
-	sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput;
-	Authenticator?: Prisma.AuthenticatorUncheckedCreateNestedManyWithoutUserInput;
 };
 
 export type UserUpdateInput = {
@@ -315,8 +305,6 @@ export type UserUpdateInput = {
 	createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 	updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 	accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput;
-	sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput;
-	Authenticator?: Prisma.AuthenticatorUpdateManyWithoutUserNestedInput;
 };
 
 export type UserUncheckedUpdateInput = {
@@ -332,8 +320,6 @@ export type UserUncheckedUpdateInput = {
 	createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 	updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 	accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput;
-	sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput;
-	Authenticator?: Prisma.AuthenticatorUncheckedUpdateManyWithoutUserNestedInput;
 };
 
 export type UserCreateManyInput = {
@@ -451,58 +437,6 @@ export type UserUpdateOneRequiredWithoutAccountsNestedInput = {
 	>;
 };
 
-export type UserCreateNestedOneWithoutSessionsInput = {
-	create?: Prisma.XOR<
-		Prisma.UserCreateWithoutSessionsInput,
-		Prisma.UserUncheckedCreateWithoutSessionsInput
-	>;
-	connectOrCreate?: Prisma.UserCreateOrConnectWithoutSessionsInput;
-	connect?: Prisma.UserWhereUniqueInput;
-};
-
-export type UserUpdateOneRequiredWithoutSessionsNestedInput = {
-	create?: Prisma.XOR<
-		Prisma.UserCreateWithoutSessionsInput,
-		Prisma.UserUncheckedCreateWithoutSessionsInput
-	>;
-	connectOrCreate?: Prisma.UserCreateOrConnectWithoutSessionsInput;
-	upsert?: Prisma.UserUpsertWithoutSessionsInput;
-	connect?: Prisma.UserWhereUniqueInput;
-	update?: Prisma.XOR<
-		Prisma.XOR<
-			Prisma.UserUpdateToOneWithWhereWithoutSessionsInput,
-			Prisma.UserUpdateWithoutSessionsInput
-		>,
-		Prisma.UserUncheckedUpdateWithoutSessionsInput
-	>;
-};
-
-export type UserCreateNestedOneWithoutAuthenticatorInput = {
-	create?: Prisma.XOR<
-		Prisma.UserCreateWithoutAuthenticatorInput,
-		Prisma.UserUncheckedCreateWithoutAuthenticatorInput
-	>;
-	connectOrCreate?: Prisma.UserCreateOrConnectWithoutAuthenticatorInput;
-	connect?: Prisma.UserWhereUniqueInput;
-};
-
-export type UserUpdateOneRequiredWithoutAuthenticatorNestedInput = {
-	create?: Prisma.XOR<
-		Prisma.UserCreateWithoutAuthenticatorInput,
-		Prisma.UserUncheckedCreateWithoutAuthenticatorInput
-	>;
-	connectOrCreate?: Prisma.UserCreateOrConnectWithoutAuthenticatorInput;
-	upsert?: Prisma.UserUpsertWithoutAuthenticatorInput;
-	connect?: Prisma.UserWhereUniqueInput;
-	update?: Prisma.XOR<
-		Prisma.XOR<
-			Prisma.UserUpdateToOneWithWhereWithoutAuthenticatorInput,
-			Prisma.UserUpdateWithoutAuthenticatorInput
-		>,
-		Prisma.UserUncheckedUpdateWithoutAuthenticatorInput
-	>;
-};
-
 export type UserCreateWithoutAccountsInput = {
 	id?: string;
 	name?: string | null;
@@ -511,8 +445,6 @@ export type UserCreateWithoutAccountsInput = {
 	image?: string | null;
 	createdAt?: Date | string;
 	updatedAt?: Date | string;
-	sessions?: Prisma.SessionCreateNestedManyWithoutUserInput;
-	Authenticator?: Prisma.AuthenticatorCreateNestedManyWithoutUserInput;
 };
 
 export type UserUncheckedCreateWithoutAccountsInput = {
@@ -523,8 +455,6 @@ export type UserUncheckedCreateWithoutAccountsInput = {
 	image?: string | null;
 	createdAt?: Date | string;
 	updatedAt?: Date | string;
-	sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput;
-	Authenticator?: Prisma.AuthenticatorUncheckedCreateNestedManyWithoutUserInput;
 };
 
 export type UserCreateOrConnectWithoutAccountsInput = {
@@ -567,8 +497,6 @@ export type UserUpdateWithoutAccountsInput = {
 	image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 	updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-	sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput;
-	Authenticator?: Prisma.AuthenticatorUpdateManyWithoutUserNestedInput;
 };
 
 export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -583,176 +511,6 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
 	image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 	createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 	updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-	sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput;
-	Authenticator?: Prisma.AuthenticatorUncheckedUpdateManyWithoutUserNestedInput;
-};
-
-export type UserCreateWithoutSessionsInput = {
-	id?: string;
-	name?: string | null;
-	email: string;
-	emailVerified?: Date | string | null;
-	image?: string | null;
-	createdAt?: Date | string;
-	updatedAt?: Date | string;
-	accounts?: Prisma.AccountCreateNestedManyWithoutUserInput;
-	Authenticator?: Prisma.AuthenticatorCreateNestedManyWithoutUserInput;
-};
-
-export type UserUncheckedCreateWithoutSessionsInput = {
-	id?: string;
-	name?: string | null;
-	email: string;
-	emailVerified?: Date | string | null;
-	image?: string | null;
-	createdAt?: Date | string;
-	updatedAt?: Date | string;
-	accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput;
-	Authenticator?: Prisma.AuthenticatorUncheckedCreateNestedManyWithoutUserInput;
-};
-
-export type UserCreateOrConnectWithoutSessionsInput = {
-	where: Prisma.UserWhereUniqueInput;
-	create: Prisma.XOR<
-		Prisma.UserCreateWithoutSessionsInput,
-		Prisma.UserUncheckedCreateWithoutSessionsInput
-	>;
-};
-
-export type UserUpsertWithoutSessionsInput = {
-	update: Prisma.XOR<
-		Prisma.UserUpdateWithoutSessionsInput,
-		Prisma.UserUncheckedUpdateWithoutSessionsInput
-	>;
-	create: Prisma.XOR<
-		Prisma.UserCreateWithoutSessionsInput,
-		Prisma.UserUncheckedCreateWithoutSessionsInput
-	>;
-	where?: Prisma.UserWhereInput;
-};
-
-export type UserUpdateToOneWithWhereWithoutSessionsInput = {
-	where?: Prisma.UserWhereInput;
-	data: Prisma.XOR<
-		Prisma.UserUpdateWithoutSessionsInput,
-		Prisma.UserUncheckedUpdateWithoutSessionsInput
-	>;
-};
-
-export type UserUpdateWithoutSessionsInput = {
-	id?: Prisma.StringFieldUpdateOperationsInput | string;
-	name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-	email?: Prisma.StringFieldUpdateOperationsInput | string;
-	emailVerified?:
-		| Prisma.NullableDateTimeFieldUpdateOperationsInput
-		| Date
-		| string
-		| null;
-	image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-	createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-	updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-	accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput;
-	Authenticator?: Prisma.AuthenticatorUpdateManyWithoutUserNestedInput;
-};
-
-export type UserUncheckedUpdateWithoutSessionsInput = {
-	id?: Prisma.StringFieldUpdateOperationsInput | string;
-	name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-	email?: Prisma.StringFieldUpdateOperationsInput | string;
-	emailVerified?:
-		| Prisma.NullableDateTimeFieldUpdateOperationsInput
-		| Date
-		| string
-		| null;
-	image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-	createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-	updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-	accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput;
-	Authenticator?: Prisma.AuthenticatorUncheckedUpdateManyWithoutUserNestedInput;
-};
-
-export type UserCreateWithoutAuthenticatorInput = {
-	id?: string;
-	name?: string | null;
-	email: string;
-	emailVerified?: Date | string | null;
-	image?: string | null;
-	createdAt?: Date | string;
-	updatedAt?: Date | string;
-	accounts?: Prisma.AccountCreateNestedManyWithoutUserInput;
-	sessions?: Prisma.SessionCreateNestedManyWithoutUserInput;
-};
-
-export type UserUncheckedCreateWithoutAuthenticatorInput = {
-	id?: string;
-	name?: string | null;
-	email: string;
-	emailVerified?: Date | string | null;
-	image?: string | null;
-	createdAt?: Date | string;
-	updatedAt?: Date | string;
-	accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput;
-	sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput;
-};
-
-export type UserCreateOrConnectWithoutAuthenticatorInput = {
-	where: Prisma.UserWhereUniqueInput;
-	create: Prisma.XOR<
-		Prisma.UserCreateWithoutAuthenticatorInput,
-		Prisma.UserUncheckedCreateWithoutAuthenticatorInput
-	>;
-};
-
-export type UserUpsertWithoutAuthenticatorInput = {
-	update: Prisma.XOR<
-		Prisma.UserUpdateWithoutAuthenticatorInput,
-		Prisma.UserUncheckedUpdateWithoutAuthenticatorInput
-	>;
-	create: Prisma.XOR<
-		Prisma.UserCreateWithoutAuthenticatorInput,
-		Prisma.UserUncheckedCreateWithoutAuthenticatorInput
-	>;
-	where?: Prisma.UserWhereInput;
-};
-
-export type UserUpdateToOneWithWhereWithoutAuthenticatorInput = {
-	where?: Prisma.UserWhereInput;
-	data: Prisma.XOR<
-		Prisma.UserUpdateWithoutAuthenticatorInput,
-		Prisma.UserUncheckedUpdateWithoutAuthenticatorInput
-	>;
-};
-
-export type UserUpdateWithoutAuthenticatorInput = {
-	id?: Prisma.StringFieldUpdateOperationsInput | string;
-	name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-	email?: Prisma.StringFieldUpdateOperationsInput | string;
-	emailVerified?:
-		| Prisma.NullableDateTimeFieldUpdateOperationsInput
-		| Date
-		| string
-		| null;
-	image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-	createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-	updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-	accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput;
-	sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput;
-};
-
-export type UserUncheckedUpdateWithoutAuthenticatorInput = {
-	id?: Prisma.StringFieldUpdateOperationsInput | string;
-	name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-	email?: Prisma.StringFieldUpdateOperationsInput | string;
-	emailVerified?:
-		| Prisma.NullableDateTimeFieldUpdateOperationsInput
-		| Date
-		| string
-		| null;
-	image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
-	createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-	updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
-	accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput;
-	sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput;
 };
 
 /**
@@ -761,8 +519,6 @@ export type UserUncheckedUpdateWithoutAuthenticatorInput = {
 
 export type UserCountOutputType = {
 	accounts: number;
-	sessions: number;
-	Authenticator: number;
 };
 
 export type UserCountOutputTypeSelect<
@@ -770,8 +526,6 @@ export type UserCountOutputTypeSelect<
 		runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
 	accounts?: boolean | UserCountOutputTypeCountAccountsArgs;
-	sessions?: boolean | UserCountOutputTypeCountSessionsArgs;
-	Authenticator?: boolean | UserCountOutputTypeCountAuthenticatorArgs;
 };
 
 /**
@@ -797,26 +551,6 @@ export type UserCountOutputTypeCountAccountsArgs<
 	where?: Prisma.AccountWhereInput;
 };
 
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountSessionsArgs<
-	ExtArgs extends
-		runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
-> = {
-	where?: Prisma.SessionWhereInput;
-};
-
-/**
- * UserCountOutputType without action
- */
-export type UserCountOutputTypeCountAuthenticatorArgs<
-	ExtArgs extends
-		runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
-> = {
-	where?: Prisma.AuthenticatorWhereInput;
-};
-
 export type UserSelect<
 	ExtArgs extends
 		runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
@@ -830,8 +564,6 @@ export type UserSelect<
 		createdAt?: boolean;
 		updatedAt?: boolean;
 		accounts?: boolean | Prisma.User$accountsArgs<ExtArgs>;
-		sessions?: boolean | Prisma.User$sessionsArgs<ExtArgs>;
-		Authenticator?: boolean | Prisma.User$AuthenticatorArgs<ExtArgs>;
 		_count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>;
 	},
 	ExtArgs["result"]["user"]
@@ -897,8 +629,6 @@ export type UserInclude<
 		runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = {
 	accounts?: boolean | Prisma.User$accountsArgs<ExtArgs>;
-	sessions?: boolean | Prisma.User$sessionsArgs<ExtArgs>;
-	Authenticator?: boolean | Prisma.User$AuthenticatorArgs<ExtArgs>;
 	_count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>;
 };
 export type UserIncludeCreateManyAndReturn<
@@ -917,8 +647,6 @@ export type $UserPayload<
 	name: "User";
 	objects: {
 		accounts: Prisma.$AccountPayload<ExtArgs>[];
-		sessions: Prisma.$SessionPayload<ExtArgs>[];
-		Authenticator: Prisma.$AuthenticatorPayload<ExtArgs>[];
 	};
 	scalars: runtime.Types.Extensions.GetPayloadResult<
 		{
@@ -1490,28 +1218,6 @@ export interface Prisma__UserClient<
 		  >
 		| Null
 	>;
-	sessions<T extends Prisma.User$sessionsArgs<ExtArgs> = {}>(
-		args?: Prisma.Subset<T, Prisma.User$sessionsArgs<ExtArgs>>,
-	): Prisma.PrismaPromise<
-		| runtime.Types.Result.GetResult<
-				Prisma.$SessionPayload<ExtArgs>,
-				T,
-				"findMany",
-				GlobalOmitOptions
-		  >
-		| Null
-	>;
-	Authenticator<T extends Prisma.User$AuthenticatorArgs<ExtArgs> = {}>(
-		args?: Prisma.Subset<T, Prisma.User$AuthenticatorArgs<ExtArgs>>,
-	): Prisma.PrismaPromise<
-		| runtime.Types.Result.GetResult<
-				Prisma.$AuthenticatorPayload<ExtArgs>,
-				T,
-				"findMany",
-				GlobalOmitOptions
-		  >
-		| Null
-	>;
 	/**
 	 * Attaches callbacks for the resolution and/or rejection of the Promise.
 	 * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2028,66 +1734,6 @@ export type User$accountsArgs<
 	take?: number;
 	skip?: number;
 	distinct?: Prisma.AccountScalarFieldEnum | Prisma.AccountScalarFieldEnum[];
-};
-
-/**
- * User.sessions
- */
-export type User$sessionsArgs<
-	ExtArgs extends
-		runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
-> = {
-	/**
-	 * Select specific fields to fetch from the Session
-	 */
-	select?: Prisma.SessionSelect<ExtArgs> | null;
-	/**
-	 * Omit specific fields from the Session
-	 */
-	omit?: Prisma.SessionOmit<ExtArgs> | null;
-	/**
-	 * Choose, which related nodes to fetch as well
-	 */
-	include?: Prisma.SessionInclude<ExtArgs> | null;
-	where?: Prisma.SessionWhereInput;
-	orderBy?:
-		| Prisma.SessionOrderByWithRelationInput
-		| Prisma.SessionOrderByWithRelationInput[];
-	cursor?: Prisma.SessionWhereUniqueInput;
-	take?: number;
-	skip?: number;
-	distinct?: Prisma.SessionScalarFieldEnum | Prisma.SessionScalarFieldEnum[];
-};
-
-/**
- * User.Authenticator
- */
-export type User$AuthenticatorArgs<
-	ExtArgs extends
-		runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
-> = {
-	/**
-	 * Select specific fields to fetch from the Authenticator
-	 */
-	select?: Prisma.AuthenticatorSelect<ExtArgs> | null;
-	/**
-	 * Omit specific fields from the Authenticator
-	 */
-	omit?: Prisma.AuthenticatorOmit<ExtArgs> | null;
-	/**
-	 * Choose, which related nodes to fetch as well
-	 */
-	include?: Prisma.AuthenticatorInclude<ExtArgs> | null;
-	where?: Prisma.AuthenticatorWhereInput;
-	orderBy?:
-		| Prisma.AuthenticatorOrderByWithRelationInput
-		| Prisma.AuthenticatorOrderByWithRelationInput[];
-	cursor?: Prisma.AuthenticatorWhereUniqueInput;
-	take?: number;
-	skip?: number;
-	distinct?:
-		| Prisma.AuthenticatorScalarFieldEnum
-		| Prisma.AuthenticatorScalarFieldEnum[];
 };
 
 /**

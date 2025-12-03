@@ -19,7 +19,7 @@ const config: runtime.GetPrismaClientConfig = {
 	engineVersion: "f09f2815f091dbba658cdcd2264306d88bb5bda6",
 	activeProvider: "postgresql",
 	inlineSchema:
-		'generator client {\n  provider     = "prisma-client"\n  output       = "../generated"\n  moduleFormat = "esm"\n  runtime      = "nodejs"\n}\n\ndatasource db {\n  provider = "postgresql"\n}\n',
+		'datasource db {\n  provider = "postgresql"\n}\n\ngenerator client {\n  provider     = "prisma-client"\n  output       = "../generated"\n  moduleFormat = "esm"\n  runtime      = "nodejs"\n}\n\nmodel Photo {\n  id String @id @default(cuid())\n\n  userId  String\n  comment String\n\n  filePath    String\n  contentType String\n  size        Int\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n',
 	runtimeDataModel: {
 		models: {},
 		enums: {},
@@ -27,7 +27,9 @@ const config: runtime.GetPrismaClientConfig = {
 	},
 };
 
-config.runtimeDataModel = JSON.parse('{"models":{},"enums":{},"types":{}}');
+config.runtimeDataModel = JSON.parse(
+	'{"models":{"Photo":{"fields":[{"name":"id","kind":"scalar","type":"String"},{"name":"userId","kind":"scalar","type":"String"},{"name":"comment","kind":"scalar","type":"String"},{"name":"filePath","kind":"scalar","type":"String"},{"name":"contentType","kind":"scalar","type":"String"},{"name":"size","kind":"scalar","type":"Int"},{"name":"createdAt","kind":"scalar","type":"DateTime"},{"name":"updatedAt","kind":"scalar","type":"DateTime"}],"dbName":null}},"enums":{},"types":{}}',
+);
 
 async function decodeBase64AsWasm(
 	wasmBase64: string,
@@ -64,8 +66,8 @@ export interface PrismaClientConstructor {
 	 * @example
 	 * ```
 	 * const prisma = new PrismaClient()
-	 * // Fetch zero or more Users
-	 * const users = await prisma.user.findMany()
+	 * // Fetch zero or more Photos
+	 * const photos = await prisma.photo.findMany()
 	 * ```
 	 *
 	 * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
@@ -93,8 +95,8 @@ export interface PrismaClientConstructor {
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Users
- * const users = await prisma.user.findMany()
+ * // Fetch zero or more Photos
+ * const photos = await prisma.photo.findMany()
  * ```
  *
  * Read more in our [docs](https://www.prisma.io/docs/reference/tools-and-interfaces/prisma-client).
@@ -223,6 +225,16 @@ export interface PrismaClient<
 			}
 		>
 	>;
+
+	/**
+	 * `prisma.photo`: Exposes CRUD operations for the **Photo** model.
+	 * Example usage:
+	 * ```ts
+	 * // Fetch zero or more Photos
+	 * const photos = await prisma.photo.findMany()
+	 * ```
+	 */
+	get photo(): Prisma.PhotoDelegate<ExtArgs, { omit: OmitOpts }>;
 }
 
 export function getPrismaClientClass(): PrismaClientConstructor {

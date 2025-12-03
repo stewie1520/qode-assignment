@@ -1,0 +1,11 @@
+{
+	"extends": "@qode-assignment/config/tsconfig.base.json",
+	"compilerOptions": {
+		"composite": true,
+		"outDir": "dist",
+		"baseUrl": ".",
+		"declaration": true,
+		"declarationMap": true
+	},
+	"include": ["src/**/*"]
+}

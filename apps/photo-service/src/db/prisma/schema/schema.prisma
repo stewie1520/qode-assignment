@@ -1,12 +1,12 @@
+datasource db {
+  provider = "postgresql"
+}
+
 generator client {
   provider     = "prisma-client"
   output       = "../generated"
   moduleFormat = "esm"
   runtime      = "nodejs"
-}
-
-datasource db {
-  provider = "postgresql"
 }
 
 model Photo {

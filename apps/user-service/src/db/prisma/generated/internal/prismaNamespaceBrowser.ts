@@ -56,9 +56,6 @@ export const AnyNull = runtime.AnyNull;
 export const ModelName = {
 	User: "User",
 	Account: "Account",
-	Session: "Session",
-	VerificationToken: "VerificationToken",
-	Authenticator: "Authenticator",
 } as const;
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
@@ -108,40 +105,6 @@ export const AccountScalarFieldEnum = {
 
 export type AccountScalarFieldEnum =
 	(typeof AccountScalarFieldEnum)[keyof typeof AccountScalarFieldEnum];
-
-export const SessionScalarFieldEnum = {
-	sessionToken: "sessionToken",
-	userId: "userId",
-	expires: "expires",
-	createdAt: "createdAt",
-	updatedAt: "updatedAt",
-} as const;
-
-export type SessionScalarFieldEnum =
-	(typeof SessionScalarFieldEnum)[keyof typeof SessionScalarFieldEnum];
-
-export const VerificationTokenScalarFieldEnum = {
-	identifier: "identifier",
-	token: "token",
-	expires: "expires",
-} as const;
-
-export type VerificationTokenScalarFieldEnum =
-	(typeof VerificationTokenScalarFieldEnum)[keyof typeof VerificationTokenScalarFieldEnum];
-
-export const AuthenticatorScalarFieldEnum = {
-	credentialID: "credentialID",
-	userId: "userId",
-	providerAccountId: "providerAccountId",
-	credentialPublicKey: "credentialPublicKey",
-	counter: "counter",
-	credentialDeviceType: "credentialDeviceType",
-	credentialBackedUp: "credentialBackedUp",
-	transports: "transports",
-} as const;
-
-export type AuthenticatorScalarFieldEnum =
-	(typeof AuthenticatorScalarFieldEnum)[keyof typeof AuthenticatorScalarFieldEnum];
 
 export const SortOrder = {
 	asc: "asc",

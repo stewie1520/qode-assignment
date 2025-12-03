@@ -10,14 +10,14 @@
 		"db:migrate": "prisma migrate dev"
 	},
 	"dependencies": {
-		"express": "^5.1.0",
-		"cors": "^2.8.5",
-		"dotenv": "catalog:",
-		"zod": "^4.1.11",
-		"@prisma/client": "catalog:",
-		"@prisma/adapter-neon": "^7.0.0",
 		"@neondatabase/serverless": "^1.0.2",
-		"ws": "^8.18.3"
+		"@prisma/adapter-neon": "^7.0.0",
+		"@prisma/client": "catalog:",
+		"@qode-assignment/middlewares": "workspace:*",
+		"dotenv": "catalog:",
+		"express": "^5.1.0",
+		"ws": "^8.18.3",
+		"zod": "^4.1.11"
 	},
 	"devDependencies": {
 		"typescript": "^5.8.2",
