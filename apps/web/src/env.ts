@@ -2,6 +2,7 @@ import { createEnv } from "@t3-oss/env-nextjs";
 import { z } from "zod";
 
 export const env = createEnv({
+	skipValidation: process.env.SKIP_VALIDATION === "true",
 	server: {
 		NEXTAUTH_URL: z.url(),
 		NEXTAUTH_SECRET: z.string().min(1),
@@ -13,7 +14,7 @@ export const env = createEnv({
 		PHOTO_SERVICE_INTERNAL_API_KEY: z.string().min(1),
 	},
 	client: {
-		NEXT_PUBLIC_SERVER_URL: z.url(),
+		NEXT_PUBLIC_BASE_URL: z.url(),
 	},
 	runtimeEnv: {
 		NEXTAUTH_URL: process.env.NEXTAUTH_URL,
@@ -24,6 +25,6 @@ export const env = createEnv({
 		PHOTO_SERVICE_URL: process.env.PHOTO_SERVICE_URL,
 		USER_SERVICE_INTERNAL_API_KEY: process.env.USER_SERVICE_INTERNAL_API_KEY,
 		PHOTO_SERVICE_INTERNAL_API_KEY: process.env.PHOTO_SERVICE_INTERNAL_API_KEY,
-		NEXT_PUBLIC_SERVER_URL: process.env.NEXT_PUBLIC_SERVER_URL,
+		NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
 	},
 });

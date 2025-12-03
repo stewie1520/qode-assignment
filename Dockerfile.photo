@@ -1,0 +1,45 @@
+FROM node:25-alpine AS base
+RUN yarn global add corepack && corepack enable && corepack prepare pnpm@10.20.0 --activate
+WORKDIR /app
+
+FROM base AS deps
+COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
+COPY apps/photo-service/package.json ./apps/photo-service/
+COPY packages/config/package.json ./packages/config/
+COPY packages/middlewares/package.json ./packages/middlewares/
+RUN pnpm install --frozen-lockfile
+
+FROM base AS builder
+COPY --from=deps /app/node_modules ./node_modules
+COPY --from=deps /app/apps/photo-service/node_modules ./apps/photo-service/node_modules
+COPY --from=deps /app/packages/config/* ./packages/config/*
+COPY --from=deps /app/packages/middlewares/node_modules ./packages/middlewares/node_modules
+
+COPY pnpm-lock.yaml pnpm-workspace.yaml package.json turbo.json ./
+COPY apps/photo-service ./apps/photo-service
+COPY packages ./packages
+
+RUN pnpm --filter photo-service db:generate
+RUN pnpm --filter photo-service build
+
+FROM node:25-alpine AS runner
+WORKDIR /app
+
+ENV NODE_ENV=production
+ENV PORT=3000
+
+RUN addgroup --system --gid 1001 nodejs && \
+    adduser --system --uid 1001 appuser
+
+COPY --from=builder --chown=appuser:nodejs /app/apps/photo-service/dist ./apps/photo-service/dist
+COPY --from=builder --chown=appuser:nodejs /app/node_modules ./node_modules
+COPY --from=builder --chown=appuser:nodejs /app/apps/photo-service/node_modules ./apps/photo-service/node_modules
+COPY pnpm-lock.yaml pnpm-workspace.yaml package.json turbo.json ./
+COPY apps/photo-service/package.json ./apps/photo-service/
+
+USER appuser
+
+EXPOSE 3000
+
+CMD ["node", "apps/photo-service/dist/index.mjs"]
+# CMD ["npx", "http-server"]

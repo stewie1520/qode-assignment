@@ -1,0 +1,34 @@
+services:
+  web:
+    container_name: qode-web
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+      args:
+        - SKIP_VALIDATION=true
+        - NEXT_PUBLIC_BASE_URL=http://localhost:3001
+    ports:
+      - "3001:3001"
+    env_file:
+      - './apps/web/.env.docker'
+    depends_on:
+      - user-service
+      - photo-service
+  user-service:
+    container_name: qode-user-service
+    build:
+      context: .
+      dockerfile: Dockerfile.user
+    ports:
+      - "3002:3002"
+    env_file:
+      - './apps/user-service/.env.docker'
+  photo-service:
+    container_name: qode-photo-service
+    build:
+      context: .
+      dockerfile: Dockerfile.photo
+    ports:
+      - "3000:3000"
+    env_file:
+      - './apps/photo-service/.env.docker'
