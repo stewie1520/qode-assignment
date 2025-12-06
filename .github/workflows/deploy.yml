@@ -50,13 +50,13 @@ jobs:
         include:
           - name: photo-service
             dockerfile: Dockerfile.photo
-            webhook: ${{ secrets.DOKPLOY_PHOTO_DEPLOYMENT_WEBHOOK }}
+            webhook_secret: DOKPLOY_PHOTO_DEPLOYMENT_WEBHOOK
           - name: user-service
             dockerfile: Dockerfile.user
-            webhook: ${{ secrets.DOKPLOY_USER_DEPLOYMENT_WEBHOOK }}
+            webhook_secret: DOKPLOY_USER_DEPLOYMENT_WEBHOOK
           - name: web
             dockerfile: Dockerfile.web
-            webhook: ${{ secrets.DOKPLOY_WEB_DEPLOYMENT_WEBHOOK }}
+            webhook_secret: DOKPLOY_WEB_DEPLOYMENT_WEBHOOK
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -95,4 +95,4 @@ jobs:
 
       - name: Trigger deployment
         run: |
-          curl --request GET '${{ matrix.webhook }}'
+          curl --request GET '${{ secrets[matrix.webhook_secret] }}'
